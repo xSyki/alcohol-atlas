@@ -9,6 +9,8 @@ interface MapProps extends google.maps.MapOptions {
   children?: React.ReactNode
 }
 
+const maxLat = (Math.atan(Math.sinh(Math.PI)) * 180) / Math.PI
+
 const Map: React.FC<MapProps> = ({ onIdle, children, style, ...options }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [map, setMap] = useState<google.maps.Map>()
@@ -20,6 +22,15 @@ const Map: React.FC<MapProps> = ({ onIdle, children, style, ...options }) => {
           streetViewControl: false,
           styles: mapStyles,
           mapTypeControl: false,
+          restriction: {
+            latLngBounds: {
+              north: maxLat,
+              south: -maxLat,
+              west: -180,
+              east: 180,
+            },
+            strictBounds: true,
+          },
         })
       )
     }

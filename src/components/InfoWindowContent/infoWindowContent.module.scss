@@ -1,7 +1,7 @@
 .infoWindow {
   display: flex;
   flex-direction: row;
-
+  position: relative;
   max-width: 50vw;
 
   &__image {
@@ -19,11 +19,14 @@
   }
 
   &__url {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
     width: 100%;
     display: flex;
     justify-content: center;
     text-decoration: none;
-    cursor: pointer;
   }
 
   &__btn {
@@ -33,6 +36,7 @@
     font-size: 1rem;
     padding: 0.3em;
     border-radius: 0.2rem;
+    cursor: pointer;
   }
 
   &__title {

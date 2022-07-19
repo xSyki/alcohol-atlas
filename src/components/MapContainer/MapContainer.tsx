@@ -9,10 +9,10 @@ const render = (status: Status) => {
 }
 
 function MapContainer() {
-  const [zoom, setZoom] = useState(3)
+  const [zoom, setZoom] = useState(4.5)
   const [center, setCenter] = useState<google.maps.LatLngLiteral>({
-    lat: 0,
-    lng: 0,
+    lat: 48,
+    lng: 15,
   })
 
   const onIdle = (m: google.maps.Map) => {

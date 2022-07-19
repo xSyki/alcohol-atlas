@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import beer from '../../assets/images/beer.png'
 import { markerContentInterface } from '../../assets/markers'
 import InfoWindowContent from '../InfoWindowContent/InfoWindowContent'
 import ReactDOMServer from 'react-dom/server'
@@ -13,7 +12,7 @@ const Marker = (options: MarkerPropsInterface) => {
   const [marker, setMarker] = useState<google.maps.Marker>(
     new google.maps.Marker({
       position: options.position,
-      icon: beer,
+      icon: markerContent.icon,
     })
   )
   const [infoWindow, setInfoWindow] = useState(
