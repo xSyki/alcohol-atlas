@@ -21,18 +21,19 @@ function MapContainer() {
   }
   return (
     <div style={{ height: '100%' }}>
-      <Wrapper
-        apiKey={`${process.env.GOOGLE_MAPS_API_KEY}`}
-        render={render}
-      >
+      <Wrapper apiKey={`${process.env.GOOGLE_MAPS_API_KEY}`} render={render}>
         <Map
           center={center}
           onIdle={onIdle}
           zoom={zoom}
-          style={{ flexGrow: '1', height: '100%' }}
+          style={{ height: '100%' }}
         >
-          {markers.map((latLng, i) => (
-            <Marker key={i} position={latLng} />
+          {markers.map((marker) => (
+            <Marker
+              key={marker.id}
+              position={marker.position}
+              markerContent={marker.markerContent}
+            />
           ))}
         </Map>
       </Wrapper>

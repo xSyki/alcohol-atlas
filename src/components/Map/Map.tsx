@@ -19,11 +19,7 @@ const Map: React.FC<MapProps> = ({ onIdle, children, style, ...options }) => {
         new window.google.maps.Map(ref.current, {
           streetViewControl: false,
           styles: mapStyles,
-          mapTypeControl: true,
-          mapTypeControlOptions: {
-            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-            position: google.maps.ControlPosition.TOP_CENTER,
-          },
+          mapTypeControl: false,
         })
       )
     }

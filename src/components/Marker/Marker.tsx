@@ -1,25 +1,44 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import beer from '../../assets/images/beer.png'
+import { markerContentInterface } from '../../assets/markers'
+import InfoWindowContent from '../InfoWindowContent/InfoWindowContent'
+import ReactDOMServer from 'react-dom/server'
 
-const Marker: React.FC<google.maps.MarkerOptions> = (options) => {
-  const [marker, setMarker] = React.useState<google.maps.Marker>()
+interface MarkerPropsInterface extends google.maps.MarkerOptions {
+  markerContent: markerContentInterface
+}
+
+const Marker = (options: MarkerPropsInterface) => {
+  const { markerContent } = options
+  const [marker, setMarker] = useState<google.maps.Marker>(
+    new google.maps.Marker({
+      position: options.position,
+      icon: beer,
+    })
+  )
+  const [infoWindow, setInfoWindow] = useState(
+    new google.maps.InfoWindow({
+      content: '',
+      disableAutoPan: true,
+    })
+  )
 
   useEffect(() => {
-    if (!marker) {
-      setMarker(
-        new google.maps.Marker({
-          position: options.position,
-          map: options.map,
-        })
+    marker.addListener('click', () => {
+      infoWindow.setContent(
+        ReactDOMServer.renderToString(
+          <InfoWindowContent markerContent={markerContent} />
+        )
       )
-    }
+      infoWindow.open(options.map, marker)
+    })
 
-    // remove marker from map on unmount
     return () => {
       if (marker) {
         marker.setMap(null)
       }
     }
-  }, [options.position])
+  }, [])
 
   useEffect(() => {
     if (marker) {

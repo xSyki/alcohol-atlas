@@ -1,47 +1,39 @@
-const markers = [
+import beerIcon from './images/beer.png'
+
+interface positionInterface {
+  lat: number
+  lng: number
+}
+
+export interface markerContentInterface {
+  title: string
+  icon: string
+  description: string
+  url: string
+  image: string
+}
+
+export interface markerInterface {
+  id: number
+  position: positionInterface
+  markerContent: markerContentInterface
+}
+
+const markers: markerInterface[] = [
   {
-    lat: 41.64007838467894,
-    lng: 43.154296875,
-  },
-  {
-    lat: 7.362466865535751,
-    lng: 13.447265625,
-  },
-  {
-    lat: 44.21370990970205,
-    lng: -90.439453125,
-  },
-  {
-    lat: 52.48278022207823,
-    lng: 20.830078125,
-  },
-  {
-    lat: 50.736455137010665,
-    lng: 11.689453125,
-  },
-  {
-    lat: 47.27922900257082,
-    lng: 3.779296875,
-  },
-  {
-    lat: 44.84029065139799,
-    lng: 23.642578125,
-  },
-  {
-    lat: 49.61070993807422,
-    lng: 30.673828125,
-  },
-  {
-    lat: 48.922499263758255,
-    lng: 69.873046875,
-  },
-  {
-    lat: 25.799891182088334,
-    lng: 21.26953125,
-  },
-  {
-    lat: 25.958044673317847,
-    lng: 4.21875,
+    id: 1,
+    position: {
+      lat: 53.762305,
+      lng: 20.484779,
+    },
+    markerContent: {
+      title: 'Beer',
+      icon: beerIcon,
+      description: 'Really Nice Beer!',
+      url: 'https://browarkormoran.pl/piwa-browaru-kormoran/imperium-prunum/',
+      image:
+        'https://browarkormoran.pl/wp-content/uploads/2019/12/imperium-prunum-2020-butelka.png',
+    },
   },
 ]
 
